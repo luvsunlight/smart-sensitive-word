@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../dist/index.umd.js"></script>
+    <style>
+      * {
+        font-family: 'Product Sans', Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+      }
+      .icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 20px;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        margin-bottom: 50px;
+        border-bottom: 1px solid #eee;
+        color: #5f6368;
+        font-size: 20px;
+      }
+      .intro {
+        color: #5f6368;
+        margin-left: 10vw;
+      }
+      .board {
+        display: flex;
+        margin: auto;
+        width: 80vw;
+        height: 40vh;
+        border-radius: 10px;
+        box-shadow: 0 0 5px #777;
+      }
+      .board-item {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+      }
+      .board-item:first-child {
+        border-right: 1px solid #eee;
+      }
+      .board-title {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #4285f4;
+        text-align: center;
+        font-weight: bold;
+      }
+      .board-item textarea {
+        flex: 1;
+        font-size: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        resize: none;
+      }
+      .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        padding: 20px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+      }
+      .footer a {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <svg
+        t="1596186537476"
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="3448"
+      >
+        <path
+          d="M800.640332 774.655577a113.621902 113.621902 0 0 1-18.550514-45.603349l-49.468039-12.367009L241.033142 851.949388l-12.36701 9.275257a112.848964 112.848964 0 0 1 6.183505 72.656182zM582.671786 435.335747L755.809922 388.186523l33.236339-23.961082a115.167778 115.167778 0 0 1-6.956443-42.511596L740.35116 310.892712l-231.881432 64.153863zM241.033142 510.310744l37.873967 10.048195 212.55798-59.516234-73.42912-59.516235-193.234527 54.105668a114.39484 114.39484 0 0 1 16.2317 54.878606z"
+          fill="#D0DAFF"
+          p-id="3449"
+        ></path>
+        <path
+          d="M494.556842 575.237545l72.656182-52.559792-378.739673-309.175243A115.940716 115.940716 0 1 1 241.033142 102.972361l564.244819 145.312364a115.940716 115.940716 0 1 1 36.328091 173.138136l-146.85824 105.119583 123.670097 101.254892A115.940716 115.940716 0 1 1 782.089818 729.052228l-270.528338-69.564429-280.576533 201.736846a115.940716 115.940716 0 1 1-53.33273-56.424482l231.881433-170.046384-193.234527-51.013915a115.940716 115.940716 0 1 1 24.734019-77.293811z m97.390201 24.734019l103.573707 26.279896L627.502196 573.691669z m197.099218-237.291999a115.167778 115.167778 0 0 1-6.956443-40.96572L286.63649 194.179057l345.503335 282.12241z"
+          fill="#6080FF"
+          p-id="3450"
+        ></path></svg
+      >智能敏感词识别
+    </div>
+    <div class="intro">
+      <h1>三大优势</h1>
+    </div>
+    <div class="board">
+      <div class="board-item">
+        <div class="board-title">输入文本</div>
+        <textarea autofocus class="board-input"></textarea>
+      </div>
+      <div class="board-item">
+        <div class="board-title">过滤后文本</div>
+        <textarea class="board-output" placeholder="过滤后" disabled></textarea>
+      </div>
+    </div>
+    <div class="footer">
+      ©404 Inc, powered by
+      <a target="_blank" href="http://www.nrta.gov.cn/"
+        >http://www.nrta.gov.cn/</a
+      >
+    </div>
+    <script>
+      const { filter } = SmartSensitiveWord;
+      const $inputEl = document.getElementsByClassName('board-input')[0];
+      const $outputEl = document.getElementsByClassName('board-output')[0];
+      $inputEl.addEventListener('input', function () {
+        $outputEl.value = filter($inputEl.value);
+      });
+    </script>
+  </body>
+</html>
