@@ -29,7 +29,7 @@ console.log(filter(word, "*")) // [try it by yourself]
 > 安装
 
 ```
-<script src=""></script>
+<script src="https://unpkg.com/smart-sensitive-word"></script>
 ```
 
 > 引入
