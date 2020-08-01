@@ -24,7 +24,7 @@ const word = "anything you want to test"
 console.log(filter(word, "*")) // [try it by yourself]
 ```
 
-## script
+## script
 
 > 安装
 
