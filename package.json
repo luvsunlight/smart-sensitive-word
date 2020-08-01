@@ -1,6 +1,6 @@
 {
   "name": "smart-sensitive-word",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/index.common.js",
@@ -10,6 +10,7 @@
   "amd:main": "dist/index.umd.js",
   "files": [
     "dist",
+    "docs",
     "src",
     "README.md"
   ],
