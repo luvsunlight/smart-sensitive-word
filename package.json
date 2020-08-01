@@ -10,6 +10,7 @@
   "amd:main": "dist/index.umd.js",
   "files": [
     "dist",
+    "docs",
     "src",
     "README.md"
   ],
