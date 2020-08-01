@@ -1,6 +1,6 @@
 {
   "name": "smart-sensitive-word",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/index.common.js",

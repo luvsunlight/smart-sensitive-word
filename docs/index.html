@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/smart-sensitive-word"></script>
     <style>
       * {
-        font-family: 'Product Sans', Arial, sans-serif;
+        /* font-family: 'Product Sans', Arial, sans-serif; */
         font-weight: 200;
       }
       body {
@@ -25,6 +25,7 @@
         border-bottom: 1px solid #eee;
         color: #4285f4;
         font-size: 20px;
+        cursor: pointer;
       }
       .intro {
         color: #5f6368;
@@ -76,6 +77,51 @@
       .footer a {
         color: #fff;
       }
+      .message {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .mask {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      /* 打印效果来源于 张鑫旭博客 https://www.zhangxinxu.com/wordpress/2019/01/css-typewriter-effect/ */
+      .typing {
+        white-space: nowrap;
+        border-right: 2px solid transparent;
+        animation: typing 1s steps(15, end);
+        overflow: hidden;
+      }
+      /* 打印效果 */
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 250px;
+        }
+      }
+      /* 光标闪啊闪 */
+      @keyframes blink-caret {
+        from,
+        to {
+          box-shadow: 1px 0 0 0 transparent;
+        }
+        50% {
+          box-shadow: 1px 0 0 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -101,7 +147,7 @@
       >智能敏感词识别
     </div>
     <div class="intro">
-      <h1>产品优势: 智能识别文本，过滤所有关键词</h1>
+      <h1>产品优势: 智能识别文本，过滤所有敏感关键词</h1>
     </div>
     <div class="board">
       <div class="board-item">
@@ -123,6 +169,23 @@
       const { filter } = SmartSensitiveWord;
       const $inputEl = document.getElementsByClassName('board-input')[0];
       const $outputEl = document.getElementsByClassName('board-output')[0];
+      const $navEl = document.getElementsByClassName('nav')[0];
+      const $msgEl = document.createElement('div');
+      const $maskEl = document.createElement('div');
+      $maskEl.className = 'mask';
+      document.body.appendChild($maskEl);
+      $msgEl.classList = 'message typing';
+      $msgEl.innerHTML = 'Warning: This product is not a joke.';
+      document.body.appendChild($msgEl);
+
+      $navEl.addEventListener('click', function () {
+        $msgEl.style.display = 'block';
+        $maskEl.style.display = 'block';
+      });
+      $maskEl.addEventListener('click', function () {
+        $msgEl.style.display = 'none';
+        $maskEl.style.display = 'none';
+      });
       $inputEl.addEventListener('input', function () {
         $outputEl.value = filter($inputEl.value);
       });
